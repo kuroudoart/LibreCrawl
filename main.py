@@ -13,6 +13,7 @@ from io import StringIO
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from flask_compress import Compress
+from flask_babel import Babel, gettext as _
 from functools import wraps
 from src.crawler import WebCrawler
 from src.settings_manager import SettingsManager
@@ -42,6 +43,25 @@ app.secret_key = 'librecrawl-secret-key-change-in-production'  # TODO: Use envir
 
 # Enable compression for all responses
 Compress(app)
+
+# Flask-Babel for i18n
+app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
+babel = Babel(app)
+BABEL_DEFAULT_LOCALE = 'en'
+BABEL_SUPPORTED_LOCALES = ['en', 'ja']
+
+@babel.localeselector
+def get_locale():
+    """Get locale from session (set by /setlang) or browser, default to en"""
+    if 'locale' in session and session['locale'] in BABEL_SUPPORTED_LOCALES:
+        return session['locale']
+    return request.accept_languages.best_match(BABEL_SUPPORTED_LOCALES) or BABEL_DEFAULT_LOCALE
+
+@app.context_processor
+def inject_locale():
+    """Make current locale available in all templates"""
+    from flask_babel import get_locale
+    return {'current_locale': str(get_locale())}
 
 # Initialize database on startup
 init_db()
@@ -419,6 +439,14 @@ def generate_issues_json_export(issues):
         'issues_by_url': issues_by_url,
         'all_issues': issues
     }, indent=2)
+
+@app.route('/setlang/<locale>')
+def set_locale(locale):
+    """Set language and redirect back to referrer or index"""
+    if locale in BABEL_SUPPORTED_LOCALES:
+        session['locale'] = locale
+        session.permanent = True
+    return redirect(request.referrer or url_for('index'))
 
 @app.route('/login')
 def login_page():

@@ -1,0 +1,237 @@
+# Japanese translations for LibreCrawl.
+# Copyright (C) 2026 LibreCrawl
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LibreCrawl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 18:49+0900\n"
+"PO-Revision-Date: 2026-03-11 18:49+0900\n"
+"Last-Translator: \n"
+"Language: ja\n"
+"Language-Team: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: web/templates/index.html:20
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+#: web/templates/index.html:21 web/templates/index.html:506
+msgid "Settings"
+msgstr "設定"
+
+#: web/templates/index.html:22
+msgid "Export"
+msgstr "エクスポート"
+
+#: web/templates/index.html:23
+msgid "Save Crawl"
+msgstr "クロールを保存"
+
+#: web/templates/index.html:24
+msgid "Load Crawl"
+msgstr "クロールを読み込み"
+
+#: web/templates/index.html:25
+msgid "Logout"
+msgstr "ログアウト"
+
+#: web/templates/index.html:34
+msgid "URL to Crawl"
+msgstr "クロールする URL"
+
+#: web/templates/index.html:48
+msgid "Start"
+msgstr "開始"
+
+#: web/templates/index.html:54
+msgid "Stop"
+msgstr "停止"
+
+#: web/templates/index.html:60
+msgid "Clear"
+msgstr "クリア"
+
+#: web/templates/index.html:68
+msgid "Initializing..."
+msgstr "初期化中..."
+
+#: web/templates/index.html:77
+msgid "Filters"
+msgstr "フィルター"
+
+#: web/templates/index.html:81 web/templates/index.html:186
+msgid "Internal"
+msgstr "内部"
+
+#: web/templates/index.html:85 web/templates/index.html:187
+msgid "External"
+msgstr "外部"
+
+#: web/templates/index.html:91
+msgid "Response Codes"
+msgstr "ステータスコード"
+
+#: web/templates/index.html:94
+msgid "2xx Success"
+msgstr "2xx 成功"
+
+#: web/templates/index.html:98
+msgid "3xx Redirect"
+msgstr "3xx リダイレクト"
+
+#: web/templates/index.html:102
+msgid "4xx Client Error"
+msgstr "4xx クライアントエラー"
+
+#: web/templates/index.html:106
+msgid "5xx Server Error"
+msgstr "5xx サーバーエラー"
+
+#: web/templates/index.html:113
+msgid "Content Type"
+msgstr "コンテンツタイプ"
+
+#: web/templates/index.html:137
+msgid "Statistics"
+msgstr "統計"
+
+#: web/templates/index.html:140
+msgid "URLs Discovered"
+msgstr "検出 URL 数"
+
+#: web/templates/index.html:144
+msgid "URLs Crawled"
+msgstr "クロール済み URL 数"
+
+#: web/templates/index.html:148
+msgid "Crawl Depth"
+msgstr "クロール深度"
+
+#: web/templates/index.html:152
+msgid "Speed"
+msgstr "速度"
+
+#: web/templates/index.html:159
+msgid "Data Size"
+msgstr "データサイズ"
+
+#: web/templates/index.html:162
+msgid "Crawl Data"
+msgstr "クロールデータ"
+
+#: web/templates/index.html:166
+msgid "Per URL"
+msgstr "URL あたり"
+
+#: web/templates/index.html:170
+msgid "Est. for 1M URLs"
+msgstr "100万 URL 時の見積もり"
+
+#: web/templates/index.html:174
+msgid "System Available"
+msgstr "システム空き容量"
+
+#: web/templates/index.html:185
+msgid "Overview"
+msgstr "概要"
+
+#: web/templates/index.html:188
+msgid "Status Codes"
+msgstr "ステータスコード"
+
+#: web/templates/index.html:189
+msgid "Links"
+msgstr "リンク"
+
+#: web/templates/index.html:190
+msgid "Issues"
+msgstr "問題"
+
+#: web/templates/index.html:191
+msgid "PageSpeed"
+msgstr "PageSpeed"
+
+#: web/templates/index.html:192
+msgid "Visualization"
+msgstr "可視化"
+
+#: web/templates/index.html:482
+msgid "Ready"
+msgstr "準備完了"
+
+#: web/templates/index.html:492
+msgid "Crawl History"
+msgstr "クロール履歴"
+
+#: web/templates/index.html:497
+msgid "Loading crawls..."
+msgstr "クロールを読み込み中..."
+
+#: web/templates/login.html:172
+msgid "SEO Spider Tool"
+msgstr "SEO スパイダーツール"
+
+#: web/templates/login.html:179 web/templates/register.html:183
+msgid "Username"
+msgstr "ユーザー名"
+
+#: web/templates/login.html:184 web/templates/register.html:194
+msgid "Password"
+msgstr "パスワード"
+
+#: web/templates/login.html:188
+msgid "Login"
+msgstr "ログイン"
+
+#: web/templates/login.html:192
+msgid "Continue as Guest (3 crawls/24h)"
+msgstr "ゲストとして続ける（24時間あたり3回まで）"
+
+#: web/templates/login.html:196
+msgid "Don't have an account?"
+msgstr "アカウントをお持ちでないですか？"
+
+#: web/templates/login.html:196
+msgid "Register here"
+msgstr "ここで登録"
+
+#: web/templates/register.html:170
+msgid "Create your account"
+msgstr "アカウントを作成"
+
+#: web/templates/register.html:177
+msgid "Registrations are currently disabled. Please contact the administrator."
+msgstr "現在、新規登録は無効です。管理者にお問い合わせください。"
+
+#: web/templates/register.html:185
+msgid "At least 3 characters"
+msgstr "3文字以上"
+
+#: web/templates/register.html:189
+msgid "Email"
+msgstr "メールアドレス"
+
+#: web/templates/register.html:196
+msgid "At least 8 characters"
+msgstr "8文字以上"
+
+#: web/templates/register.html:200
+msgid "Confirm Password"
+msgstr "パスワード（確認）"
+
+#: web/templates/register.html:204
+msgid "Register"
+msgstr "登録"
+
+#: web/templates/register.html:208
+msgid "Already have an account?"
+msgstr "すでにアカウントをお持ちですか？"
+
+#: web/templates/register.html:208
+msgid "Login here"
+msgstr "ここでログイン"

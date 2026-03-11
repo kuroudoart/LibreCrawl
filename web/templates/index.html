@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ current_locale or 'en' }}">
 <head>
     <meta charset="UTF-8">
     <title>LibreCrawl - SEO Spider</title>
@@ -15,12 +15,14 @@
                 <h1 class="app-title">LibreCrawl</h1>
                 <div class="header-actions">
                     <span id="userInfo" style="margin-right: 15px; color: #6b7280; font-size: 14px;"></span>
-                    <button class="btn btn-secondary" onclick="openDashboard()">Dashboard</button>
-                    <button class="btn btn-secondary" onclick="openSettings()">Settings</button>
-                    <button class="btn btn-secondary" onclick="exportData()">Export</button>
-                    <button class="btn btn-success" id="saveCrawlBtn" onclick="saveCrawl()" disabled>Save Crawl</button>
-                    <button class="btn btn-primary" id="loadCrawlBtn" onclick="loadCrawl()">Load Crawl</button>
-                    <button class="btn btn-danger" onclick="logout()" style="margin-left: 10px;">Logout</button>
+                    <a href="{{ url_for('set_locale', locale='ja') }}" class="btn btn-secondary" style="text-decoration: none; margin-right: 5px;">日本語</a>
+                    <a href="{{ url_for('set_locale', locale='en') }}" class="btn btn-secondary" style="text-decoration: none; margin-right: 5px;">English</a>
+                    <button class="btn btn-secondary" onclick="openDashboard()">{{ _('Dashboard') }}</button>
+                    <button class="btn btn-secondary" onclick="openSettings()">{{ _('Settings') }}</button>
+                    <button class="btn btn-secondary" onclick="exportData()">{{ _('Export') }}</button>
+                    <button class="btn btn-success" id="saveCrawlBtn" onclick="saveCrawl()" disabled>{{ _('Save Crawl') }}</button>
+                    <button class="btn btn-primary" id="loadCrawlBtn" onclick="loadCrawl()">{{ _('Load Crawl') }}</button>
+                    <button class="btn btn-danger" onclick="logout()" style="margin-left: 10px;">{{ _('Logout') }}</button>
                 </div>
             </div>
         </header>
@@ -29,7 +31,7 @@
         <section class="url-section">
             <div class="url-container">
                 <div class="input-group">
-                    <label for="urlInput" class="input-label">URL to Crawl</label>
+                    <label for="urlInput" class="input-label">{{ _('URL to Crawl') }}</label>
                     <input
                         type="url"
                         id="urlInput"
@@ -43,19 +45,19 @@
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
-                        Start
+                        {{ _('Start') }}
                     </button>
                     <button id="stopBtn" class="btn btn-danger" onclick="stopCrawl()" disabled>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                             <rect x="6" y="6" width="12" height="12"/>
                         </svg>
-                        Stop
+                        {{ _('Stop') }}
                     </button>
                     <button id="clearBtn" class="btn btn-secondary" onclick="clearCrawlData()">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                         </svg>
-                        Clear
+                        {{ _('Clear') }}
                     </button>
                 </div>
             </div>
@@ -63,7 +65,7 @@
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill"></div>
                 </div>
-                <span class="progress-text" id="progressText">Initializing...</span>
+                <span class="progress-text" id="progressText">{{ _('Initializing...') }}</span>
             </div>
         </section>
 
@@ -72,43 +74,43 @@
             <!-- Sidebar -->
             <aside class="sidebar">
                 <div class="sidebar-section">
-                    <h3 class="sidebar-title">Filters</h3>
+                    <h3 class="sidebar-title">{{ _('Filters') }}</h3>
                     <div class="filter-tree">
                         <div class="filter-group">
                             <div class="filter-item" onclick="toggleFilter('internal')">
-                                <span class="filter-name">Internal</span>
+                                <span class="filter-name">{{ _('Internal') }}</span>
                                 <span class="filter-count" id="internal-count">0</span>
                             </div>
                             <div class="filter-item" onclick="toggleFilter('external')">
-                                <span class="filter-name">External</span>
+                                <span class="filter-name">{{ _('External') }}</span>
                                 <span class="filter-count" id="external-count">0</span>
                             </div>
                         </div>
 
                         <div class="filter-group">
-                            <div class="filter-header">Response Codes</div>
+                            <div class="filter-header">{{ _('Response Codes') }}</div>
                             <div class="filter-subgroup">
                                 <div class="filter-item" onclick="toggleFilter('2xx')">
-                                    <span class="filter-name">2xx Success</span>
+                                    <span class="filter-name">{{ _('2xx Success') }}</span>
                                     <span class="filter-count" id="2xx-count">0</span>
                                 </div>
                                 <div class="filter-item" onclick="toggleFilter('3xx')">
-                                    <span class="filter-name">3xx Redirect</span>
+                                    <span class="filter-name">{{ _('3xx Redirect') }}</span>
                                     <span class="filter-count" id="3xx-count">0</span>
                                 </div>
                                 <div class="filter-item" onclick="toggleFilter('4xx')">
-                                    <span class="filter-name">4xx Client Error</span>
+                                    <span class="filter-name">{{ _('4xx Client Error') }}</span>
                                     <span class="filter-count" id="4xx-count">0</span>
                                 </div>
                                 <div class="filter-item" onclick="toggleFilter('5xx')">
-                                    <span class="filter-name">5xx Server Error</span>
+                                    <span class="filter-name">{{ _('5xx Server Error') }}</span>
                                     <span class="filter-count" id="5xx-count">0</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="filter-group">
-                            <div class="filter-header">Content Type</div>
+                            <div class="filter-header">{{ _('Content Type') }}</div>
                             <div class="filter-subgroup">
                                 <div class="filter-item" onclick="toggleFilter('html')">
                                     <span class="filter-name">HTML</span>
@@ -132,44 +134,44 @@
                 </div>
 
                 <div class="sidebar-section">
-                    <h3 class="sidebar-title">Statistics</h3>
+                    <h3 class="sidebar-title">{{ _('Statistics') }}</h3>
                     <div class="stats-container">
                         <div class="stat-item">
-                            <span class="stat-label">URLs Discovered</span>
+                            <span class="stat-label">{{ _('URLs Discovered') }}</span>
                             <span class="stat-value" id="discoveredCount">0</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">URLs Crawled</span>
+                            <span class="stat-label">{{ _('URLs Crawled') }}</span>
                             <span class="stat-value" id="crawledCount">0</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">Crawl Depth</span>
+                            <span class="stat-label">{{ _('Crawl Depth') }}</span>
                             <span class="stat-value" id="crawlDepth">0</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">Speed</span>
+                            <span class="stat-label">{{ _('Speed') }}</span>
                             <span class="stat-value" id="crawlSpeed">0 URLs/sec</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="sidebar-section">
-                    <h3 class="sidebar-title">Data Size</h3>
+                    <h3 class="sidebar-title">{{ _('Data Size') }}</h3>
                     <div class="stats-container">
                         <div class="stat-item">
-                            <span class="stat-label">Crawl Data</span>
+                            <span class="stat-label">{{ _('Crawl Data') }}</span>
                             <span class="stat-value" id="memCurrent">0 MB</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">Per URL</span>
+                            <span class="stat-label">{{ _('Per URL') }}</span>
                             <span class="stat-value" id="memPeak">0 KB/URL</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">Est. for 1M URLs</span>
+                            <span class="stat-label">{{ _('Est. for 1M URLs') }}</span>
                             <span class="stat-value" id="memEstimate1M">0 MB</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">System Available</span>
+                            <span class="stat-label">{{ _('System Available') }}</span>
                             <span class="stat-value" id="memAvailable">0 MB</span>
                         </div>
                     </div>
@@ -180,14 +182,14 @@
             <div class="content-area">
                 <div class="tab-container">
                     <div class="tab-header">
-                        <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
-                        <button class="tab-btn" onclick="switchTab('internal')">Internal</button>
-                        <button class="tab-btn" onclick="switchTab('external')">External</button>
-                        <button class="tab-btn" onclick="switchTab('status-codes')">Status Codes</button>
-                        <button class="tab-btn" onclick="switchTab('links')">Links</button>
-                        <button class="tab-btn" onclick="switchTab('issues')">Issues</button>
-                        <button class="tab-btn" onclick="switchTab('pagespeed')">PageSpeed</button>
-                        <button class="tab-btn" onclick="switchTab('visualization')">Visualization</button>
+                        <button class="tab-btn active" onclick="switchTab('overview')">{{ _('Overview') }}</button>
+                        <button class="tab-btn" onclick="switchTab('internal')">{{ _('Internal') }}</button>
+                        <button class="tab-btn" onclick="switchTab('external')">{{ _('External') }}</button>
+                        <button class="tab-btn" onclick="switchTab('status-codes')">{{ _('Status Codes') }}</button>
+                        <button class="tab-btn" onclick="switchTab('links')">{{ _('Links') }}</button>
+                        <button class="tab-btn" onclick="switchTab('issues')">{{ _('Issues') }}</button>
+                        <button class="tab-btn" onclick="switchTab('pagespeed')">{{ _('PageSpeed') }}</button>
+                        <button class="tab-btn" onclick="switchTab('visualization')">{{ _('Visualization') }}</button>
                     </div>
 
                     <div class="tab-content">
@@ -477,7 +479,7 @@
 
         <!-- Status Bar -->
         <footer class="status-bar">
-            <span id="statusText">Ready</span>
+            <span id="statusText">{{ _('Ready') }}</span>
             <span id="crawlTime">00:00</span>
         </footer>
     </div>
@@ -487,12 +489,12 @@
     <div id="dashboardModal" class="modal" style="display: none;">
         <div class="modal-content" style="max-width: 1200px;">
             <div class="modal-header">
-                <h2>Crawl History</h2>
+                <h2>{{ _('Crawl History') }}</h2>
                 <button class="modal-close" onclick="closeDashboard()">&times;</button>
             </div>
             <div class="modal-body">
                 <div id="dashboardContent" style="padding: 20px;">
-                    <p style="text-align: center; color: #9ca3af;">Loading crawls...</p>
+                    <p style="text-align: center; color: #9ca3af;">{{ _('Loading crawls...') }}</p>
                 </div>
             </div>
         </div>
@@ -501,7 +503,7 @@
     <div id="settingsModal" class="modal" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Settings</h2>
+                <h2>{{ _('Settings') }}</h2>
                 <button class="modal-close" onclick="closeSettings()">&times;</button>
             </div>
             <div class="modal-body">

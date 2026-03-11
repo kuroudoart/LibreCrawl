@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ current_locale or 'en' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -169,31 +169,31 @@
     <div class="login-container">
         <div class="logo">
             <h1>LibreCrawl</h1>
-            <p>SEO Spider Tool</p>
+            <p>{{ _('SEO Spider Tool') }}</p>
         </div>
 
         <div id="alert" class="alert"></div>
 
         <form id="loginForm">
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">{{ _('Username') }}</label>
                 <input type="text" id="username" name="username" required autofocus>
             </div>
 
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">{{ _('Password') }}</label>
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <button type="submit" class="btn" id="loginBtn">Login</button>
+            <button type="submit" class="btn" id="loginBtn">{{ _('Login') }}</button>
         </form>
 
         {% if not guest_disabled %}
-        <button class="btn btn-guest" id="guestBtn">Continue as Guest (3 crawls/24h)</button>
+        <button class="btn btn-guest" id="guestBtn">{{ _('Continue as Guest (3 crawls/24h)') }}</button>
         {% endif %}
 
         <div class="register-link">
-            Don't have an account? <a href="/register" id="registerLink">Register here</a>
+            {{ _("Don't have an account?") }} <a href="/register" id="registerLink">{{ _('Register here') }}</a>
         </div>
     </div>
 
